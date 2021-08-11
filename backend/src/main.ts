@@ -57,8 +57,10 @@ http.createServer(async (request, response) => {
 
 
   console.log('request ', request.url);
+  console.log('decoded request ', decodeURI(request.url ?? ''));
 
-  const filePath = '.' + request.url;
+  const filePath = '.' + decodeURI(request.url ?? '');
+  const fileURL = '.' + (request.url ?? '');
   const extname = String(path.extname(filePath)).toLowerCase();
 
   if (!(await fsExists(filePath))) {
@@ -90,16 +92,17 @@ http.createServer(async (request, response) => {
 
     for (let childFilePath of childFilePaths) {
       childFilePath = filePath + '/' + childFilePath;
+
       // console.log(childFilePath);
 
       if ((await fsStat(childFilePath)).isDirectory()) {
         fileInfoList.push({
           type: 'directory',
-          url: childFilePath,
+          url: encodeURI(childFilePath),
         });
       } else if (path.extname(childFilePath) === '.mp4') {
-        const thumbnailURL = `${childFilePath}.png`;
-        if (!(await fsExists(thumbnailURL))) {
+        const thumbnailFilePath = `${childFilePath}.png`;
+        if (!(await fsExists(thumbnailFilePath))) {
           const ffmpegPromise = new Promise<void>((resolve, _reject) => {
             ffmpeg(childFilePath)
               .on('end', () => {
@@ -107,7 +110,7 @@ http.createServer(async (request, response) => {
               })
               .screenshots({
                 timestamps: ['50%'],
-                filename: thumbnailURL,
+                filename: thumbnailFilePath,
                 // folder: '/path/to/output',
                 size: '320x240'
               });
@@ -118,7 +121,7 @@ http.createServer(async (request, response) => {
         fileInfoList.push({
           type: 'video',
           url: childFilePath,
-          thumbnailURL: thumbnailURL,
+          thumbnailURL: encodeURI(thumbnailFilePath),
         });
       } else {
         // console.error(`unsupported ext: ${path.extname(childFilePath)}`);
