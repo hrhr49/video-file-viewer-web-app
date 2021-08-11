@@ -84,16 +84,16 @@ const ItemCard: React.FC<IItemCardProps> = ({
           </Typography>
         </CardContent>
       </Link>
-      <CardActions>
-        <Button size="small" color="primary">
-          <InfoIcon className={classes.icon} />
-            Info
-        </Button>
-        <Button size="small" color="primary">
-          <GetAppIcon className={classes.icon} />
-            Download
-        </Button>
-      </CardActions>
+      {/* <CardActions> */}
+      {/*   <Button size="small" color="primary"> */}
+      {/*     <InfoIcon className={classes.icon} /> */}
+      {/*       Info */}
+      {/*   </Button> */}
+      {/*   <Button size="small" color="primary"> */}
+      {/*     <GetAppIcon className={classes.icon} /> */}
+      {/*       Download */}
+      {/*   </Button> */}
+      {/* </CardActions> */}
     </Card>
   );
 }
