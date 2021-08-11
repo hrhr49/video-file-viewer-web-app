@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  BrowserRouter,
+  HashRouter,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -28,7 +28,7 @@ const AppRouter: React.FC<{}> = (
 ) => {
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route 
           path='/'
@@ -37,7 +37,7 @@ const AppRouter: React.FC<{}> = (
           <App />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
