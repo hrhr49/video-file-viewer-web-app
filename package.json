@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hrhr49/video-file-viewer-web-app/issues"
   },
-  "homepage": "https://github.com/hrhr49/video-file-viewer-web-app#readme"
+  "homepage": "https://github.com/hrhr49/video-file-viewer-web-app#readme",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
 }
