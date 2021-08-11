@@ -13,8 +13,10 @@ import ffmpeg from 'fluent-ffmpeg';
 import {
   HOST,
   PORT,
-  SERVE_DIR,
 } from '../../common/config';
+import {
+  SERVE_DIR,
+} from './config';
 
 process.chdir(SERVE_DIR);
 
