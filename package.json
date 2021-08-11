@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/hrhr49/video-file-viewer-web-app#readme",
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/node": "^16.4.13",
     "@types/react": "^17.0.17",
     "@types/react-dom": "^17.0.9",

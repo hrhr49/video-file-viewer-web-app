@@ -79,7 +79,7 @@ const App: React.FC<{}> = () => {
                       window.open(BASE_URL + '/' + mp4Path);
                     }
                   }
-                  imageURL=""
+                  imageURL={BASE_URL + '/' + mp4Path + '.png'}
                   imageTitle="Image title"
                   itemName={mp4Path.split('/').slice(-1)[0]}
                 />
