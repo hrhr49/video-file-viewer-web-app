@@ -10,8 +10,7 @@ import { CustomPagination } from './CustomPagination';
 import { CustomBreadcrums } from './CustomBreadcrums';
 import { ItemCard } from './ItemCard';
 
-import {axios, BASE_URL} from '../axios';
-import {VideoItem, isVideoItem} from '../../../common/types';
+import {fetchFileList, BASE_URL, FileLists} from '../fetch';
 
 const useStyles = makeStyles((theme: any) => ({
   cardGrid: {
@@ -25,7 +24,7 @@ const App: React.FC<{}> = () => {
   const classes = useStyles();
   const { pathname } = useLocation();
   const history = useHistory();
-  const [videoItemList, setVideoItemList] = React.useState<VideoItem[]>([]);
+  const [fileLists, setFileLists] = React.useState<FileLists>({dirList: [], mp4List: []});
 
   const pathnameList = pathname
     .replace(/^\/+/, '')
@@ -34,12 +33,7 @@ const App: React.FC<{}> = () => {
 
   React.useEffect(() => {
     (async () => {
-      const data: unknown = (await axios.get(pathname)).data;
-      if (data instanceof Array && data.every(v => isVideoItem(v))) {
-        setVideoItemList(data);
-      } else {
-        throw `data is not VideoItem List type: ${data}`;
-      }
+      setFileLists(await fetchFileList(pathname));
     })();
   }, [pathname]);
 
@@ -59,34 +53,35 @@ const App: React.FC<{}> = () => {
         <Container className={classes.cardGrid} >
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {videoItemList.map(({type, thumbnailURL, url}: VideoItem) => (
-              <Grid item key={url} xs={12} sm={6} md={3}>
+            {fileLists.dirList.map((dirPath: string) => (
+              <Grid item key={dirPath} xs={12} sm={6} md={3}>
                 <ItemCard 
                   onClick={
                     () => {
-                      switch (type) {
-                        case 'directory': {
-                          console.log(url);
-                          const pathToGo = url.replace(/\/+/g, '/');
-                          history.push(pathToGo);
-                          break;
-                        }
-                        case 'video': {
-                          window.open(BASE_URL + '/' + url);
-                          break;
-                        }
-                        default: {
-                          const _: never = type;
-                          console.error(`${_} is invalid video type`);
-                        }
-                      }
+                      console.log(dirPath);
+                      const pathToGo = dirPath.replace(/\/+/g, '/');
+                      history.push(pathToGo);
+
                     }
                   }
-                  imageURL={
-                    thumbnailURL ? BASE_URL + '/' + thumbnailURL : ''
-                  }
+                  imageURL=""
                   imageTitle="Image title"
-                  itemName={url.split('/').slice(-1)[0]}
+                  itemName={dirPath.split('/').slice(-1)[0]}
+                />
+              </Grid>
+            ))}
+            {fileLists.mp4List.map((mp4Path: string) => (
+              <Grid item key={mp4Path} xs={12} sm={6} md={3}>
+                <ItemCard 
+                  onClick={
+                    () => {
+                      console.log(mp4Path);
+                      window.open(BASE_URL + '/' + mp4Path);
+                    }
+                  }
+                  imageURL=""
+                  imageTitle="Image title"
+                  itemName={mp4Path.split('/').slice(-1)[0]}
                 />
               </Grid>
             ))}

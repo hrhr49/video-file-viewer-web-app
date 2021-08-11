@@ -1,0 +1,1 @@
+http-serverとscripts/resourceGenerator.tsでサーバー側の処理を賄うことにしたため、不要

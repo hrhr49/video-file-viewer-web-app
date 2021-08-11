@@ -4,7 +4,12 @@
   "description": "video file browser web app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:resouceGenerator": "ts-node scripts/resourceGenerator.ts",
+    "start:serveFile": "ts-node scripts/serveFile.ts",
+    "start:servePage": "ts-node scripts/servePage.ts",
+    "build": "parcel build index.html",
+    "start": "yarn build && run-p start:*"
   },
   "repository": {
     "type": "git",
@@ -17,6 +22,27 @@
   },
   "homepage": "https://github.com/hrhr49/video-file-viewer-web-app#readme",
   "devDependencies": {
+    "@types/node": "^16.4.13",
+    "@types/react": "^17.0.17",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
+    "dotenv-cli": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.12.5",
+    "ts-node": "^10.2.0",
     "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.60",
+    "@types/chokidar": "^2.1.3",
+    "@types/fluent-ffmpeg": "^2.1.18",
+    "axios": "^0.21.1",
+    "chokidar": "^3.5.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0"
   }
 }

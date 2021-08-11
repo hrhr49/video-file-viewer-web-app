@@ -60,7 +60,6 @@ http.createServer(async (request, response) => {
   console.log('decoded request ', decodeURI(request.url ?? ''));
 
   const filePath = '.' + decodeURI(request.url ?? '');
-  const fileURL = '.' + (request.url ?? '');
   const extname = String(path.extname(filePath)).toLowerCase();
 
   if (!(await fsExists(filePath))) {
