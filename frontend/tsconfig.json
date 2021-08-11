@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ]
+}
