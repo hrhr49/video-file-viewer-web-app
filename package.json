@@ -1,0 +1,19 @@
+{
+  "name": "video-file-viewer-web-app",
+  "version": "1.0.0",
+  "description": "video file browser web app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/hrhr49/video-file-viewer-web-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrhr49/video-file-viewer-web-app/issues"
+  },
+  "homepage": "https://github.com/hrhr49/video-file-viewer-web-app#readme"
+}
