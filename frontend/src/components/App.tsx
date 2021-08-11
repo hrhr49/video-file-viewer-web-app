@@ -83,7 +83,7 @@ const App: React.FC<{}> = () => {
                     }
                   }
                   imageURL={
-                    thumbnailURL ? BASE_URL + '/' + thumbnailURL : "https://source.unsplash.com/random"
+                    thumbnailURL ? BASE_URL + '/' + thumbnailURL : ''
                   }
                   imageTitle="Image title"
                   itemName={url.split('/').slice(-1)[0]}

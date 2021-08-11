@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import InfoIcon from '@material-ui/icons/Info';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import FolderIcon from '@material-ui/icons/Folder';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -27,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
   },
   cardMedia: {
     paddingTop: '56.25%', // 16:9
+  },
+  cardMediaEmpty: {
+    paddingTop: '56.25%', // 16:9
+    background: theme.palette.grey[300],
   },
   cardContent: {
     flexGrow: 1,
@@ -57,11 +62,22 @@ const ItemCard: React.FC<IItemCardProps> = ({
           onClick();
         }}
       >
-        <CardMedia
-          className={classes.cardMedia}
-          image={imageURL}
-          title={imageTitle}
-        />
+        {
+          imageURL
+          ?
+          <CardMedia
+            className={classes.cardMedia}
+            image={imageURL}
+            title={imageTitle}
+          />
+          :
+          <CardMedia
+            className={classes.cardMediaEmpty}
+            title="huga"
+          >
+          </CardMedia>
+        }
+
         <CardContent className={classes.cardContent}>
           <Typography gutterBottom variant="h5" component="h2">
             {itemName}
