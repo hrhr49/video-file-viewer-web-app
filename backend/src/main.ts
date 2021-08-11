@@ -131,7 +131,7 @@ http.createServer(async (request, response) => {
     console.log(`content: ${content}`);
     response.writeHead(200, {...headers, 'Content-Type': mimeTypes['.json']});
     response.end(content, 'utf-8');
-  } else if (extname !== 'mp4') {
+  } else if (extname !== '.mp4') {
 
     // file except mp4
     fs.readFile(filePath, function (error, content) {
