@@ -59,7 +59,7 @@ const App: React.FC<{}> = () => {
                   onClick={
                     () => {
                       console.log(dirPath);
-                      const pathToGo = dirPath.replace(/\/+/g, '/');
+                      const pathToGo = ('/' + dirPath).replace(/\/+/g, '/');
                       history.push(pathToGo);
 
                     }
