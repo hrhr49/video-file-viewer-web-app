@@ -10,14 +10,20 @@ const fsReaddir = promisify(fs.readdir);
 
 import ffmpeg from 'fluent-ffmpeg';
 
+import {
+  HOST,
+  PORT,
+  SERVE_DIR,
+} from '../../common/config';
+
+process.chdir(SERVE_DIR);
+
 interface FileInfo {
   type: 'directory' | 'video';
   url: string;
   thumbnailURL?: string;
 }
 
-const HOST = '0.0.0.0';
-const PORT = 8125;
 const mimeTypes = {
   '.html': 'text/html',
   '.js': 'text/javascript',

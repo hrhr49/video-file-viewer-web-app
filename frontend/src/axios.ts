@@ -1,6 +1,9 @@
 import axiosBase from 'axios';
+import {
+  PORT
+} from '../../common/config';
 
-const BASE_URL = `http://${location.hostname}:8125`;
+const BASE_URL = `http://${location.hostname}:${PORT}`;
 const axios = axiosBase.create({
   baseURL: BASE_URL,
   headers: {
